@@ -193,33 +193,7 @@ nav{
 #hero .bounce-arrow svg{width:1.4rem;height:1.4rem;color:var(--muted);animation:bounce 1.4s ease-in-out infinite;}
 @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
 
-/* ===== TICKER ===== */
-#ticker{
-  position:relative;z-index:3;
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  background:rgba(5,5,8,0.7);backdrop-filter:blur(12px);
-  overflow:hidden;padding:0.85rem 0;
-}
-.ticker-track{
-  display:flex;gap:0;white-space:nowrap;
-  animation:ticker-scroll 28s linear infinite;
-}
-.ticker-track:hover{animation-play-state:paused;}
-.ticker-item{
-  display:inline-flex;align-items:center;gap:0.75rem;
-  padding:0 2rem;font-size:0.78rem;letter-spacing:0.1em;
-  text-transform:uppercase;font-weight:600;color:var(--muted);
-  font-family:'Space Grotesk',sans-serif;
-}
-.ticker-item .dot{
-  width:5px;height:5px;border-radius:50%;flex-shrink:0;
-}
-.ticker-item:nth-child(5n+1) .dot{background:var(--blue);box-shadow:0 0 6px var(--blue);}
-.ticker-item:nth-child(5n+2) .dot{background:var(--orange);box-shadow:0 0 6px var(--orange);}
-.ticker-item:nth-child(5n+3) .dot{background:var(--purple);box-shadow:0 0 6px var(--purple);}
-.ticker-item:nth-child(5n+4) .dot{background:#2BE6A6;box-shadow:0 0 6px #2BE6A6;}
-.ticker-item:nth-child(5n+5) .dot{background:var(--text);box-shadow:0 0 4px rgba(255,255,255,0.4);}
-@keyframes ticker-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
 
 /* ===== FIXED CARDS ===== */
 #fixed-cards{
@@ -472,14 +446,7 @@ nav{
     </div>
   </section>
 
-  <!-- Ticker -->
-  <div id="ticker">
-    <div class="ticker-track" id="ticker-track">
-      <!-- Filled by JS -->
-    </div>
-  </div>
 
-  <!-- Spacer -->
   <div style="height:120vh;"></div>
 
   <!-- Cards Trigger Zone -->
@@ -620,22 +587,6 @@ nav{
     document.querySelectorAll('#hero h1 .char').forEach(c=>c.classList.add('show'));
   });
 
-  // ===== TICKER =====
-  const TICKER_ITEMS = [
-    'Top TikTok Songs','New Music Friday','Editors\'s Picks','On The Radar',
-    'Top of the Month','Sounds of Nigeria','Alternative Afrobeats',
-    'Afro-R&B Essentials','The New Wave','African Alternative Music',
-    'Psych Essentials','Discovery Sessions','Artist Spotlights','What\'s On Your Playlist'
-  ];
-  const track = document.getElementById('ticker-track');
-  // Duplicate for seamless loop
-  const allItems = [...TICKER_ITEMS, ...TICKER_ITEMS];
-  allItems.forEach(name => {
-    const el = document.createElement('span');
-    el.className = 'ticker-item';
-    el.innerHTML = `<span class="dot"></span>${name}`;
-    track.appendChild(el);
-  });
 
   // ===== PARTICLES =====
   const pCanvas = document.getElementById('particles-canvas');
