@@ -946,8 +946,8 @@ input[type=range]::-moz-range-track{background:transparent;}
       </div>
     </div>
 
-    <!-- Swap this src with your own MP3 path, or change tracks in the PLAYLIST array in the script below. -->
-    <audio id="vp-audio" src="assets/audio/midnight-echoes.mp3" preload="metadata"></audio>
+    <!-- Audio src is set dynamically from VP_PLAYLIST above. No external files needed. -->
+    <audio id="vp-audio" preload="metadata"></audio>
   </section>
 
   <!-- Spacer -->
@@ -1310,10 +1310,36 @@ input[type=range]::-moz-range-track{background:transparent;}
   }
 
   // ===== VINYL PLAYER EXPERIENCE =====
+  // ── HOW TO EMBED YOUR MP3s ──────────────────────────────────────────────────
+  // 1. Convert each MP3 to base64. Quick ways:
+  //    • Online: https://base64.guru/converter/encode/audio/mp3
+  //    • Terminal: base64 -i your-song.mp3 | tr -d '\n'
+  // 2. Paste the base64 string into the src field below, keeping the
+  //    "data:audio/mpeg;base64," prefix exactly as shown.
+  // 3. Set duration (in seconds) to match your track length.
+  // ────────────────────────────────────────────────────────────────────────────
   const VP_PLAYLIST = [
-    {title:'Midnight Echoes', artist:'PSYCH ENT', genre:'Alternative / Ambient', src:'assets/audio/midnight-echoes.mp3', duration:222},
-    {title:'Neon Skyline',    artist:'PSYCH ENT', genre:'Synthwave / Electronic', src:'assets/audio/neon-skyline.mp3',    duration:195},
-    {title:'Glass Horizon',   artist:'PSYCH ENT', genre:'Dream Pop / Chill',      src:'assets/audio/glass-horizon.mp3',   duration:248}
+    {
+      title:    'Midnight Echoes',
+      artist:   'PSYCH ENT',
+      genre:    'Alternative / Ambient',
+      duration: 222,
+      src:      'data:audio/mpeg;base64,PASTE_BASE64_FOR_TRACK_1_HERE'
+    },
+    {
+      title:    'Neon Skyline',
+      artist:   'PSYCH ENT',
+      genre:    'Synthwave / Electronic',
+      duration: 195,
+      src:      'data:audio/mpeg;base64,PASTE_BASE64_FOR_TRACK_2_HERE'
+    },
+    {
+      title:    'Glass Horizon',
+      artist:   'PSYCH ENT',
+      genre:    'Dream Pop / Chill',
+      duration: 248,
+      src:      'data:audio/mpeg;base64,PASTE_BASE64_FOR_TRACK_3_HERE'
+    }
   ];
 
   const vpAudio       = document.getElementById('vp-audio');
